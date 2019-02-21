@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: oauthcord
+Version: 0.0.1
+Summary: An Oauth2 wrapper for discord
+Home-page: https://github.com/lganWebb/oauthcord
+Author: Logan Webb
+Author-email: lganWebb04@gmail.com
+License: UNKNOWN
+Description: # OauthCord
+        ### A discord Oauth2 wrapper for python.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
