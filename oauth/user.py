@@ -6,6 +6,7 @@ class User(object):
     __slots__ = ("id", "name", "discriminator", "avatar_url", "flags", "premium_type", "mfa", "bot", "locale", "__dict__")
 
     def __init__(self, dict=None):
+        self.dict = dict
         # Take out everything that we inherited from the GET /users/@me
         # Account Info
         self.id = dict.get("id")
@@ -35,3 +36,9 @@ class User(object):
         Returns a `bool`. Identical to `discord.Member.bot`
         """
         return self.bot
+    
+    def to_json(self):
+        """
+        Returns the user object in a dict / json like format
+        """
+        return self.dict
