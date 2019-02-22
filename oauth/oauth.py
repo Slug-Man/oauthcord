@@ -72,7 +72,6 @@ class Oauth(object):
         url = [self.discord_api_url+"/users/@me"]
         if "guild" in self.scope:
             url.append(self.discord_api_url+"users/@me/guilds")
-        elif ""
 
         headers = {
             'Authorization': f"Bearer {access_token}"
