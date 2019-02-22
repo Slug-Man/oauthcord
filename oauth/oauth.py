@@ -2,8 +2,8 @@
 import requests
 
 # Locals
-from oauthcord.user import User
-from oauthcord.application import Application
+from .user import User
+from .application import Application
     
 class Oauth(object):
     """
