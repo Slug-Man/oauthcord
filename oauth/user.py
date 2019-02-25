@@ -1,3 +1,5 @@
+from .oauth import Oauth
+
 class User(object):
     """
     A user object, like the normal discord user object.
@@ -42,3 +44,12 @@ class User(object):
         Returns the user object in a dict / json like format
         """
         return self.dict
+    
+    def logout(self):
+        """
+        Logs out the user
+        """
+        try:
+            del Oauth().users[self.id]
+        except Exception as error:
+            return error

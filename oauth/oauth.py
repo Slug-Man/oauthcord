@@ -13,6 +13,9 @@ class Oauth(object):
     __slots__ = ("client_id", "client_secret", "scope", "redirect_uri", "discord_login_url", "discord_token_url", "discord_api_url")
 
     def __init__(self, **kwargs):
+        # Cache
+        self.users = {}
+
         # Discord Client Stuff
         self.client_id = kwargs.get("client_id")
         self.client_secret = kwargs.get("client_secret")
@@ -65,21 +68,34 @@ class Oauth(object):
         res = requests.post(url=self.discord_token_url, data=payload, headers=headers)
         return res.json()
      
-    def get_user(self, access_token):
+    def get_user(self, token_or_id):
         """
         Return the user object for an access token.
         """
-        url = [self.discord_api_url+"/users/@me"]
-        if "guild" in self.scope:
-            url.append(self.discord_api_url+"users/@me/guilds")
+        if isinstance(token_or_id, str):
+            url = [self.discord_api_url+"/users/@me"]
+            if "guild" in self.scope:
+                url.append(self.discord_api_url+"users/@me/guilds")
 
-        headers = {
-            'Authorization': f"Bearer {access_token}"
-        }
+            headers = {
+                'Authorization': f"Bearer {access_token}"
+            }
 
-        user_object = requests.get(url=*url, headers=headers)    
-        user_json = user_object.json()
-        return User(user_json) if user_json.get("message") != "401: Unauthorized" else user_json
+            user_object = requests.get(url=*url, headers=headers)    
+            user_json = user_object.json()
+            id = user_json["id"]
+            self.users[id] = user_json
+            return User(user_json) if user_json.get("message") != "401: Unauthorized" else user_json
+        elif isinstance(token_or_id, int):
+            for item in self.users.keys():
+                if item != str(token_or_id): 
+                    continue
+                else:
+                    u = self.users[item]
+                    return User(u)
+        else:
+            got = type(token_or_id)
+            raise ValueError("Expected type str or int, got %s" % got)
     
     def get_current_application(self, access_token):
         """
