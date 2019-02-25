@@ -5,12 +5,11 @@ with open("README.md", "r") as ld:
     
 setup(
     name="oauthcord",
-    version="0.0.1",
+    version="0.0.2",
     author="Logan Webb",
     author_email="lganWebb04@gmail.com",
     description="An Oauth2 wrapper for discord",
     long_description=long_description,
-    long_description_content_type="text/markdown",
     url="https://github.com/lganWebb/oauthcord",
     packages=find_packages(),
     classifiers=[
