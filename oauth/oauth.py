@@ -27,7 +27,7 @@ class Oauth(object):
         self.discord_token_url = "https://discordapp.com/api/v6/oauth2/token"
         self.discord_api_url = "https://discordapp.com/api/v6"
 
-    def get_access_token(self, code, option=None):
+    def get_access_token(self, code, option=None) -> dict:
         """
         Get a user's access token.
         Can be used to get user objects.
@@ -48,7 +48,7 @@ class Oauth(object):
         json = access_token.json()
         return json.get("access_token") if option is None else json.get(option)
     
-    def refresh_token(self, refresh_token):
+    def refresh_token(self, refresh_token) -> dict:
         """
         Refresh the token if the `expires_in` ends.
         """
@@ -68,7 +68,7 @@ class Oauth(object):
         res = requests.post(url=self.discord_token_url, data=payload, headers=headers)
         return res.json()
      
-    def get_user(self, token_or_id):
+    def get_user(self, token_or_id) -> User:
         """
         Return the user object for an access token.
         """
@@ -97,7 +97,7 @@ class Oauth(object):
             got = type(token_or_id)
             raise ValueError("Expected type str or int, got %s" % got)
     
-    def get_current_application(self, access_token):
+    def get_current_application(self, access_token) -> Application:
         """
         Get current application.
         """
