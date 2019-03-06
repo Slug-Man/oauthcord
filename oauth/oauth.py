@@ -5,7 +5,7 @@ import requests
 from .user import User
 from .application import Application
     
-class Oauth(object):
+class App(object):
     """
     The main oauth class.
     """
