@@ -10,7 +10,7 @@ class App(object):
     The main oauth class.
     """
 
-    __slots__ = ("client_id", "client_secret", "scope", "redirect_uri", "discord_login_url", "discord_token_url", "discord_api_url")
+    __slots__ = ("client_id", "client_secret", "scope", "redirect_uri", "discord_login_url", "discord_token_url", "discord_api_url","users")
 
     def __init__(self, **kwargs):
         # Cache
@@ -81,7 +81,7 @@ class App(object):
                 'Authorization': f"Bearer {access_token}"
             }
 
-            user_object = requests.get(url=*url, headers=headers)    
+            user_object = requests.get(url=url, headers=headers)    
             user_json = user_object.json()
             id = user_json["id"]
             self.users[id] = user_json
