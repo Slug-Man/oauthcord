@@ -78,7 +78,7 @@ class App(object):
                 url.append(self.discord_api_url+"users/@me/guilds")
 
             headers = {
-                'Authorization': f"Bearer {access_token}"
+                'Authorization': f"Bearer {token_or_id}"
             }
 
             user_object = requests.get(url=url, headers=headers)    
