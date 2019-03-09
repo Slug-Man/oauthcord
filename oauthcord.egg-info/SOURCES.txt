@@ -1,0 +1,10 @@
+README.md
+setup.py
+oauthcord/__init__.py
+oauthcord/application.py
+oauthcord/oauth.py
+oauthcord/user.py
+oauthcord.egg-info/PKG-INFO
+oauthcord.egg-info/SOURCES.txt
+oauthcord.egg-info/dependency_links.txt
+oauthcord.egg-info/top_level.txt
