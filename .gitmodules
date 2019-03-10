@@ -1,0 +1,3 @@
+[submodule "oauthcord"]
+	path = oauthcord
+	url = git://github.com/lganWebb/oauthcord/oauthcord
