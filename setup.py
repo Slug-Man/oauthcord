@@ -5,7 +5,7 @@ with open("README.md", "r") as ld:
     
 setup(
     name="oauthcord",
-    version="0.2.0",
+    version="0.2.1",
     author="Logan Webb",
     author_email="lganWebb04@gmail.com",
     description="An Oauth2 wrapper for discord",
