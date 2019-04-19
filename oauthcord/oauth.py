@@ -73,9 +73,9 @@ class App(object):
         Return the user object for an access token.
         """
         if isinstance(token_or_id, str):
-            url = [self.discord_api_url+"/users/@me"]
-            if "guild" in self.scope:
-                url.append(self.discord_api_url+"users/@me/guilds")
+            url = self.discord_api_url+"/users/@me"
+            # if "guild" in self.scope:
+            #     url.append(self.discord_api_url + "users/@me/guilds")
 
             headers = {
                 'Authorization': f"Bearer {token_or_id}"
@@ -86,6 +86,7 @@ class App(object):
             id = user_json["id"]
             self.users[id] = user_json
             return User(user_json) if user_json.get("message") != "401: Unauthorized" else user_json
+
         elif isinstance(token_or_id, int):
             for item in self.users.keys():
                 if item != str(token_or_id): 
