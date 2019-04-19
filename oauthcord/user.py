@@ -1,4 +1,4 @@
-from .oauth import Oauth
+from oauthcord.oauth import App
 
 class User(object):
     """
@@ -50,6 +50,6 @@ class User(object):
         Logs out the user
         """
         try:
-            del Oauth().users[self.id]
+            del App().users[self.id]
         except Exception as error:
             return error

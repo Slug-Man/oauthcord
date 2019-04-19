@@ -10,7 +10,7 @@ class Application(object):
         # Application info
         self.id = dict.get("id")
         self.name = dict.get("name")
-        sef.icon = dict.get("icon")
+        self.icon = dict.get("icon")
         self.description = dict.get("description")
 
         # Rpc

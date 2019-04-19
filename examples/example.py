@@ -12,7 +12,7 @@ redirect(app.discord_login_url)
 login_code = request.args.get("code")
 
 # Get the access token for a user, this is needed
-access_token = app.get_access_code(code=login_code)
+access_token = app.get_access_token(code=login_code)
 
 # You are now able to get the user. App.get_user takes a user id (required to be in the cache) or a valid access token.
 user = app.get_user(access_token)
